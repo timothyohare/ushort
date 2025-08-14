@@ -3,8 +3,8 @@
 This file tracks the progress of implementing the URL shortener project following the Test-Driven Development (TDD) approach outlined in `blueprint.md`.
 
 ## Progress Overview
-- [x] 2/9 chunks completed
-- [x] Project started - Chunks 1-2 complete!
+- [x] 3/9 chunks completed
+- [x] Project started - Chunks 1-3 complete!
 
 ## Chunk 1: Project Setup
 **Status: ✅ COMPLETED**
@@ -20,12 +20,12 @@ This file tracks the progress of implementing the URL shortener project followin
 - [x] Refactor implementation while keeping tests green
 
 ## Chunk 3: Database Schema (TDD)
-**Status: Not Started**
-- [ ] Write integration tests using Spring Boot Test to define expected database operations
-- [ ] Design and implement URLs table (id, original_url, shortened_url, access_count, last_accessed)
-- [ ] Design and implement Admin table (username, password_hash)
-- [ ] Create JPA entities and repositories
-- [ ] Refactor schema design while keeping tests green
+**Status: ✅ COMPLETED**
+- [x] Write integration tests using Spring Boot Test to define expected database operations
+- [x] Design and implement URLs table (id, original_url, shortened_url, access_count, last_accessed)
+- [x] Design and implement Admin table (username, password_hash)
+- [x] Create JPA entities and repositories
+- [x] Refactor schema design while keeping tests green
 
 ## Chunk 4: API Development (TDD)
 **Status: Not Started**
@@ -115,4 +115,4 @@ Each chunk is considered complete when:
 - Support up to 1,000,000 shortened URLs
 
 ---
-*Last updated: 2025-08-14 - Chunk 1 completed*
+*Last updated: 2025-08-14 - Chunk 3 completed*
