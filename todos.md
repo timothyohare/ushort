@@ -3,21 +3,21 @@
 This file tracks the progress of implementing the URL shortener project following the Test-Driven Development (TDD) approach outlined in `blueprint.md`.
 
 ## Progress Overview
-- [ ] 0/9 chunks completed
-- [ ] Project not started
+- [x] 2/9 chunks completed
+- [x] Project started - Chunks 1-2 complete!
 
 ## Chunk 1: Project Setup
-**Status: Not Started**
-- [ ] Create a Spring Boot application
-- [ ] Configure H2 in-memory database
-- [ ] Verify the setup with a simple "Hello World" endpoint
+**Status: ✅ COMPLETED**
+- [x] Create a Spring Boot application
+- [x] Configure H2 in-memory database
+- [x] Verify the setup with a simple "Hello World" endpoint
 
 ## Chunk 2: URL Shortening Logic (TDD)
-**Status: Not Started**
-- [ ] Write unit tests using JUnit 5 to define expected behavior of hashing logic
-- [ ] Implement SHA256 + Base62 encoding mechanism to make tests pass
-- [ ] Implement rude word filtering
-- [ ] Refactor implementation while keeping tests green
+**Status: ✅ COMPLETED**
+- [x] Write unit tests using JUnit 5 to define expected behavior of hashing logic
+- [x] Implement SHA256 + Base62 encoding mechanism to make tests pass
+- [x] Implement rude word filtering
+- [x] Refactor implementation while keeping tests green
 
 ## Chunk 3: Database Schema (TDD)
 **Status: Not Started**
@@ -115,4 +115,4 @@ Each chunk is considered complete when:
 - Support up to 1,000,000 shortened URLs
 
 ---
-*Last updated: [Date when you start development]*
+*Last updated: 2025-08-14 - Chunk 1 completed*
