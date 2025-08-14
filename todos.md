@@ -3,8 +3,8 @@
 This file tracks the progress of implementing the URL shortener project following the Test-Driven Development (TDD) approach outlined in `blueprint.md`.
 
 ## Progress Overview
-- [x] 3/9 chunks completed
-- [x] Project started - Chunks 1-3 complete!
+- [x] 4/9 chunks completed
+- [x] Project started - Chunks 1-4 complete!
 
 ## Chunk 1: Project Setup
 **Status: ✅ COMPLETED**
@@ -28,13 +28,13 @@ This file tracks the progress of implementing the URL shortener project followin
 - [x] Refactor schema design while keeping tests green
 
 ## Chunk 4: API Development (TDD)
-**Status: Not Started**
-- [ ] Write integration tests using TestRestTemplate to define expected API behavior
-- [ ] Develop `POST /shorten` endpoint to make tests pass
-- [ ] Develop `GET /{shortenedUrl}` redirection endpoint to make tests pass
-- [ ] Integrate URL expiry checks in redirection logic
-- [ ] Add comprehensive logging for API operations
-- [ ] Refactor API implementation while keeping tests green
+**Status: ✅ COMPLETED**
+- [x] Write integration tests using TestRestTemplate to define expected API behavior
+- [x] Develop `POST /shorten` endpoint to make tests pass
+- [x] Develop `GET /{shortenedUrl}` redirection endpoint to make tests pass
+- [x] Integrate URL expiry checks in redirection logic
+- [x] Add comprehensive logging for API operations
+- [x] Refactor API implementation while keeping tests green
 
 ## Chunk 5: Frontend Development (TDD)
 **Status: Not Started**
@@ -115,4 +115,4 @@ Each chunk is considered complete when:
 - Support up to 1,000,000 shortened URLs
 
 ---
-*Last updated: 2025-08-14 - Chunk 3 completed*
+*Last updated: 2025-08-14 - Chunk 4 completed*

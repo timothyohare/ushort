@@ -2,6 +2,9 @@ package au.id.ohare.ushort.repository;
 
 import au.id.ohare.ushort.entity.UrlEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import java.time.LocalDateTime;
@@ -31,4 +34,14 @@ public interface UrlRepository extends JpaRepository<UrlEntity, Long> {
      * @return true if exists, false otherwise
      */
     boolean existsByShortenedUrl(String shortenedUrl);
+
+    /**
+     * Atomically increment access count and update last accessed time
+     * @param shortenedUrl the shortened URL code
+     * @param lastAccessed the new last accessed time
+     * @return number of updated rows
+     */
+    @Modifying
+    @Query("UPDATE UrlEntity u SET u.accessCount = u.accessCount + 1, u.lastAccessed = :lastAccessed WHERE u.shortenedUrl = :shortenedUrl")
+    int incrementAccessCount(@Param("shortenedUrl") String shortenedUrl, @Param("lastAccessed") LocalDateTime lastAccessed);
 }
