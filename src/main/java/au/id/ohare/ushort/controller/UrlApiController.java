@@ -17,6 +17,7 @@ import java.net.URI;
 import java.util.Optional;
 
 @RestController
+@RequestMapping("/api")
 @RequiredArgsConstructor
 @Slf4j
 public class UrlApiController {

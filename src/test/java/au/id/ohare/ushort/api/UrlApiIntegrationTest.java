@@ -66,7 +66,7 @@ class UrlApiIntegrationTest {
 
         // When
         ResponseEntity<String> response = restTemplate.postForEntity(
-                baseUrl + "/shorten", 
+                baseUrl + "/api/shorten", 
                 request, 
                 String.class
         );
@@ -103,14 +103,14 @@ class UrlApiIntegrationTest {
 
         // When - First request
         ResponseEntity<String> response1 = restTemplate.postForEntity(
-                baseUrl + "/shorten", 
+                baseUrl + "/api/shorten", 
                 request, 
                 String.class
         );
 
         // When - Second request with same URL
         ResponseEntity<String> response2 = restTemplate.postForEntity(
-                baseUrl + "/shorten", 
+                baseUrl + "/api/shorten", 
                 request, 
                 String.class
         );
@@ -140,7 +140,7 @@ class UrlApiIntegrationTest {
 
         // When
         ResponseEntity<String> response = restTemplate.postForEntity(
-                baseUrl + "/shorten", 
+                baseUrl + "/api/shorten", 
                 request, 
                 String.class
         );
@@ -160,7 +160,7 @@ class UrlApiIntegrationTest {
 
         // When
         ResponseEntity<String> response = restTemplate.postForEntity(
-                baseUrl + "/shorten", 
+                baseUrl + "/api/shorten", 
                 request, 
                 String.class
         );
@@ -177,7 +177,7 @@ class UrlApiIntegrationTest {
 
         // When
         ResponseEntity<String> response = restTemplate.postForEntity(
-                baseUrl + "/shorten", 
+                baseUrl + "/api/shorten", 
                 request, 
                 String.class
         );
@@ -194,7 +194,7 @@ class UrlApiIntegrationTest {
 
         // When
         ResponseEntity<String> response = restTemplate.postForEntity(
-                baseUrl + "/shorten", 
+                baseUrl + "/api/shorten", 
                 request, 
                 String.class
         );
@@ -220,7 +220,7 @@ class UrlApiIntegrationTest {
 
         // When - Access the shortened URL
         ResponseEntity<String> response = restTemplate.getForEntity(
-                baseUrl + "/" + shortenedCode, 
+                baseUrl + "/api/" + shortenedCode, 
                 String.class
         );
 
@@ -239,7 +239,7 @@ class UrlApiIntegrationTest {
     void shouldReturn404ForNonExistentUrl() {
         // When - Access non-existent shortened URL
         ResponseEntity<String> response = restTemplate.getForEntity(
-                baseUrl + "/nonexistent", 
+                baseUrl + "/api/nonexistent", 
                 String.class
         );
 
@@ -264,7 +264,7 @@ class UrlApiIntegrationTest {
 
         // When - Access the expired shortened URL
         ResponseEntity<String> response = restTemplate.getForEntity(
-                baseUrl + "/" + shortenedCode, 
+                baseUrl + "/api/" + shortenedCode, 
                 String.class
         );
 
@@ -297,7 +297,7 @@ class UrlApiIntegrationTest {
 
         // When - Access the shortened URL
         ResponseEntity<String> response = restTemplate.getForEntity(
-                baseUrl + "/" + shortenedCode, 
+                baseUrl + "/api/" + shortenedCode, 
                 String.class
         );
 
@@ -331,7 +331,7 @@ class UrlApiIntegrationTest {
         for (int i = 0; i < 5; i++) {
             threads[i] = new Thread(() -> {
                 ResponseEntity<String> response = restTemplate.getForEntity(
-                        baseUrl + "/" + shortenedCode, 
+                        baseUrl + "/api/" + shortenedCode, 
                         String.class
                 );
                 assertEquals(HttpStatus.FOUND, response.getStatusCode());
@@ -359,7 +359,7 @@ class UrlApiIntegrationTest {
 
         // When
         ResponseEntity<String> response = restTemplate.postForEntity(
-                baseUrl + "/shorten", 
+                baseUrl + "/api/shorten", 
                 request, 
                 String.class
         );
