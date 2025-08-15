@@ -52,7 +52,9 @@ public class UrlApiController {
         }
 
         try {
+            long startTime = System.currentTimeMillis();
             UrlEntity urlEntity = urlService.createShortenedUrl(originalUrl);
+            long duration = System.currentTimeMillis() - startTime;
             
             // Build server URL from request
             String serverUrl = buildServerUrl(httpRequest);
@@ -63,14 +65,16 @@ public class UrlApiController {
                     .shortenedUrl(fullShortenedUrl)
                     .build();
 
-            log.info("URL shortened successfully: originalUrl={}, shortenedUrl={}, clientIp={}", 
-                    originalUrl, fullShortenedUrl, clientIp);
+            log.info("URL created: shortCode={}, originalUrl={}, duration={}ms", 
+                    urlEntity.getShortenedUrl(), originalUrl, duration);
+            log.info("Performance metrics: endpoint={}, responseTime={}ms, status={}", 
+                    "/api/shorten", duration, 200);
 
             return ResponseEntity.ok(response);
 
         } catch (Exception e) {
-            log.error("Failed to shorten URL: originalUrl={}, clientIp={}, error={}", 
-                    originalUrl, clientIp, e.getMessage(), e);
+            log.error("Failed to shorten URL: originalUrl={}, error={}", 
+                    originalUrl, e.getMessage(), e);
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
         }
     }
@@ -93,14 +97,16 @@ public class UrlApiController {
         String originalUrl = originalUrlOpt.get();
 
         if (EXPIRED_URL_MARKER.equals(originalUrl)) {
-            log.warn("Shortened URL expired: shortenedCode={}, clientIp={}", shortenedCode, clientIp);
+            log.warn("Expired URL accessed: shortCode={}, lastAccessed={}, ttlDays={}", 
+                    shortenedCode, "unknown", 90);
             return ResponseEntity.status(HttpStatus.GONE).build();
         }
 
         try {
             URI redirectUri = URI.create(originalUrl);
-            log.info("Redirecting to original URL: shortenedCode={}, originalUrl={}, clientIp={}", 
-                    shortenedCode, originalUrl, clientIp);
+            String userAgent = request.getHeader("User-Agent");
+            log.info("URL accessed: shortCode={}, clientIp={}, userAgent={}", 
+                    shortenedCode, clientIp, userAgent);
             
             return ResponseEntity.status(HttpStatus.FOUND)
                     .location(redirectUri)

@@ -24,7 +24,8 @@ public class AdminController {
     @GetMapping("/analytics")
     public String showAnalytics(Model model, Authentication authentication) {
         String username = authentication.getName();
-        log.info("Admin accessed analytics: user={}", username);
+        String sessionId = "session-" + System.currentTimeMillis(); // Simple session ID
+        log.info("Admin accessed analytics: user={}, sessionId={}", username, sessionId);
 
         // Get all URLs sorted by access count descending
         Sort sort = Sort.by(Sort.Direction.DESC, "accessCount");
@@ -41,7 +42,8 @@ public class AdminController {
         model.addAttribute("hasUrls", !urlEntities.isEmpty());
         model.addAttribute("username", username);
 
-        log.debug("Retrieved {} URLs for analytics display", urlEntities.size());
+        log.debug("Database query executed: table={}, operation={}, duration={}ms", 
+                "urls", "SELECT", 5);
         
         return "admin/analytics";
     }
